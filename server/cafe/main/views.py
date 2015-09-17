@@ -31,7 +31,7 @@ def createUser(request):
   # TODO - check to make sure email/username isn't taken before creating
 
 
-  u = User(createdAt=timezone.now(), inPool=False, signedIn=True, firstName=fn, lastName=ln, age=age, sex=sex, email=email, password=password, totalMatches=0, missedMatches=0)
+  u = User(createdAt=timezone.now(), inPool=False, signedIn=True, hasReviewed=True, firstName=fn, lastName=ln, age=age, sex=sex, email=email, password=password, totalMatches=0, missedMatches=0)
 
   u.save()
 
@@ -63,7 +63,7 @@ def signUp(request):
 
 def findMatch(request):
 
-  # TODO - check to make sure they reviewed their last match
+  #TODO - check to make sure they reviewed their last match
 
   #TODO - run the search algorithm for the specified user
 

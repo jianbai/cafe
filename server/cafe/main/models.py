@@ -11,6 +11,7 @@ class User(models.Model):
     createdAt = models.DateTimeField('user creation date')
     signedIn = models.BooleanField()
     inPool = models.BooleanField()
+    hasReviewed = models.BooleanField()
     firstName = models.CharField(max_length=100)
     lastName = models.CharField(max_length=100)
     age = models.IntegerField()
