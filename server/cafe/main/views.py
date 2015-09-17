@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
-from users.models import User
 from django.utils import timezone
+
+from main.models import User
 
 import requests
 import math
+
 
 # once we start using celery, alot of these tasks
 # will be done using a queue (not createUser)
@@ -19,11 +21,15 @@ def createUser(request):
   ln = request.GET['ln']
   age = request.GET['age']
   sex = request.GET['sex']
-  email = request.GET['email']
-  password = request.GET['password']
-  u = User(createdAt=timezone.now(), firstName=fn, lastName=ln, a=age, s=sex, email=email, password=password, totalMatches=0, missedMatches=0)
+  email = request.GET['e']
+  password = request.GET['p']
+
+  u = User(createdAt=timezone.now(), firstName=fn, lastName=ln, age=age, sex=sex, email=email, password=password, totalMatches=0, missedMatches=0)
+
   u.save()
+
   response = JsonResponse({'possibly': 'created user'})
+  
   return response
 
 
@@ -54,6 +60,8 @@ def signUp(request):
 
 def findMatch(request):
 
+  #check to make sure they reviewed their last match
+
   #run the search algorithm for the specified user
 
   #find the midpoint between the two users' latlons
@@ -78,10 +86,6 @@ def reviewMatch(request):
 
   response = JsonResponse({'thanks': 'for reviewing'})
   return response
-
-
-
-
 
 
 
