@@ -1,0 +1,193 @@
+
+django installation...
+sudo python -m pip install Django==1.8.4
+
+
+gonna use the requests library:
+
+sudo python -m pip install requests
+
+
+
+
+made a directory TT and inside it ran
+
+django-admin startproject TeaTime
+
+
+installed postgres adapter psycopg2-2.6.1
+(had to modify $PATH)
+
+
+need to install celery, run
+
+sudo pip install celery
+
+
+
+ran postgres93 on localhost
+
+configured the settings.py file for my postgres server
+
+
+ran 
+
+python manage.py migrate
+
+which set up some database tables
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~ !*
+python manage.py runserver
+~~~~~~~~~~~~~~~~~~~~~~~~~~ \˜˜˚/
+
+
+
+can also do like $ python manage.py runserver 8080
+
+
+
+Lets create an app! First navigate to manage.py's directory, then run
+
+python manage.py startapp polls
+
+
+then we can add our schema to the models.py
+
+then we can add polls to the INSTALLED_APPS in settings.py
+
+then we can run 
+
+
+python manage.py makemigrations polls
+
+
+this creates a ~migration~
+
+which we can access with 
+
+python manage.py sqlmigrate polls 0001
+
+|
+|
+|
+|
+|
+^
+SQL
+
+
+cool! that's the database setup!
+
+
+
+
+
+
+add this to the model code in order to get a better readout in the psql console
+
+def __unicode__(self):              # __str__ on Python 2
+        return self.question_text
+
+
+note about __str__ and __unicode__
+
+"""On Python 3, it’s easy, just use __str__().
+
+On Python 2, you should define __unicode__() methods returning unicode values instead. Django models have a default __str__() method that calls __unicode__() and converts the result to a UTF-8 bytestring. This means that unicode(p) will return a Unicode string, and str(p) will return a bytestring, with characters encoded as UTF-8. Python does the opposite: object has a __unicode__ method that calls __str__ and interprets the result as an ASCII bytestring. This difference can create confusion.
+
+If all of this is gibberish to you, just use Python 3."""
+
+
+
+##########################################################
+
+
+now that the datebase connectivity is there, we should run 
+
+python manage.py shell
+
+so that we can interact with the system! ~~~ ∑ ø † π ~~~
+
+
+here as especially tricky command which takes uses the foreign key relationship to create entries
+
+>>> from polls.models import Question, Choice
+>>> q = Question.objects.get(pk=1)
+>>> q.choice_set.create(choice_text='Not much', votes=0)
+
+
+more tricky stuff (uses double underscore)
+
+>>> Choice.objects.filter(question__pub_date__year=current_year)
+>>> c = q.choice_set.filter(choice_text__startswith='Just hacking')
+
+
+these look useful
+
+>>> q.choice_set.count()
+>>> c.delete()
+
+
+
+
+
+
+
+ ©©©©©©©©©©©©©©©©©©©©©©©©©©©©
+////// BUILT-IN ADMIN \\\\\\\\
+††††††††††††††††††††††††††††††
+
+
+create an admin
+
+python manage.py createsuperuser
+
+
+then do this in the polls admin.py
+
+from .models import Question
+from .models import Choice
+
+admin.site.register(Question)
+admin.site.register(Choice)
+
+
+
+
+øøøøøøøøøøøøøøøøøøøøøøøøøø´´øøøøøøøøøøøøø´øøøøøøøøøøøøøøøøøøøøøø
+ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^∆˚ƒ¬∂ß^^^^^^^^^^^^^^^^^^^^^^^^^
+ok time to get down to business, we ain't talking about practice
+
+so I made two new apps called users and matches, this is probably not
+how I should organize it ultimately, but this is a way to start
+
+I should also refrain from creating apps called 'users', because this
+might cause internal problems, since I know django has alot of things called 'user' and 'users'
+
+
+
+admin:
+
+noahcharris - realsecret
+spw - realsecret
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
