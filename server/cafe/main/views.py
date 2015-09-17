@@ -24,30 +24,26 @@ def createUser(request):
   email = request.GET['e']
   password = request.GET['p']
 
-  u = User(createdAt=timezone.now(), firstName=fn, lastName=ln, age=age, sex=sex, email=email, password=password, totalMatches=0, missedMatches=0)
+  u = User(createdAt=timezone.now(), inPool=True, signedIn=True, firstName=fn, lastName=ln, age=age, sex=sex, email=email, password=password, totalMatches=0, missedMatches=0)
 
   u.save()
 
   response = JsonResponse({'possibly': 'created user'})
-  
+
   return response
 
 
 
 
 def signIn(request):
-
   #check password and sign em in
-
   response = JsonResponse({'signin': 'false'})
   return response
 
 
 
 def signOut(request):
-
   #sign em out
-
   response = JsonResponse({'signout': 'false'})
   return response
 
@@ -78,12 +74,11 @@ def findMatch(request):
   return response
 
 
+
+
+
 def reviewMatch(request):
-
-
   #add the rating to the proper match
-
-
   response = JsonResponse({'thanks': 'for reviewing'})
   return response
 
