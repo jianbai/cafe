@@ -16,8 +16,6 @@ import math
 
 def createUser(request):
 
-
-
   #this is how we get queryArgs
   fn = request.GET['fn']
   ln = request.GET['ln']
@@ -26,10 +24,7 @@ def createUser(request):
   email = request.GET['e']
   password = request.GET['p']
 
-
-
   # TODO - check to make sure email/username isn't taken before creating
-
 
   u = User(createdAt=timezone.now(), inPool=False, signedIn=True, hasReviewed=True, firstName=fn, lastName=ln, age=age, sex=sex, email=email, password=password, totalMatches=0, missedMatches=0)
 
@@ -40,7 +35,7 @@ def createUser(request):
   return response
 
 
-
+#do we even need signIn/Out?
 
 def signIn(request):
   #check password and sign em in
@@ -55,10 +50,19 @@ def signOut(request):
   return response
 
 
-def signUp(request):
+
+
+
+def joinPool(request):
   #this puts the user into the match pool for that day
   response = JsonResponse({'woo':'woo'})
   return response
+
+
+
+
+
+
 
 
 def findMatch(request):
@@ -83,11 +87,22 @@ def findMatch(request):
   return response
 
 
-
 def reviewMatch(request):
   #TODO - add the rating to the proper match
   response = JsonResponse({'thanks': 'for reviewing'})
   return response
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
