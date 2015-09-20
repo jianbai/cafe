@@ -1,15 +1,84 @@
+
 ∆∆∆ ~ WELCOME TO THE CAFE SERVER CODE ~ ∆∆∆
 
-first make sure you have psycopg installed and
-that cafe/cafe/settings.py is pointed at the right database
+˙
 
-and that celery is pointed at the right rabbitMQ instance
+˙
+(OSX quickstart guide)
+
+≈≈≈ 1. django ≈≈≈
 
 sudo python -m pip install Django==1.8.4
 
-pip install celery
-pip install requests
 
-$ python manage.py makemigrations
+
+≈≈≈ 2. psycopg installation ≈≈≈
+
+cd ...server/psycopg2-2.6.1
+
+sudo make install
+
+(might have to install some dependencies here?)
+
+
+
+≈≈≈ 3. postgres app ≈≈≈
+
+this is the easiest way I know to get a server up for dev purposes
+download it and run it
+
+notice that it opens up psql, you can create a new database with
+the command documented here
+http://www.postgresql.org/docs/9.4/static/sql-createdatabase.html
+
+or figure out the details of the database it runs by default and connect to that
+
+
+
+≈≈≈ 4. configure settings file ≈≈≈
+
+open the settings file
+...server/cafe/cafe/settings.py
+
+scroll down to DATABASES and configure for your database
+
+
+
+≈≈≈ 5. make migrations ≈≈≈
+
+cd ...server/cafe
+
+run the following command
+
 $ python manage.py migrate
+
+this will create the proper tables in your database
+
+
+
+≈≈≈ 6. run server ≈≈≈
+
+run
+
 $ python manage.py runserver
+
+with any luck the server should now be running!
+
+try it out at localhost:8000/admin
+
+
+
+§-- ignore this stuff --§
+
+#and that celery is pointed at the right rabbitMQ instance
+
+#pip install celery
+#pip install requests
+
+
+
+˙
+
+˙
+
+
