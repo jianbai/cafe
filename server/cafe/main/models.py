@@ -39,6 +39,8 @@ class Match(models.Model):
     user2 = models.CharField(max_length=100)
     location = models.ForeignKey(Location)
     date = models.DateTimeField()
+    user1review = models.BooleanField() #this is the review given by user1
+    user2review = models.BooleanField() #this is the review given by user2
     user1showedUp = models.BooleanField()
     user2showedUp = models.BooleanField()
     def __unicode__(self):
