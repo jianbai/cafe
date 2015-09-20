@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>051B3EE0-8950-4835-B98B-4970FE612AB3</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>cafe</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>E1EEDC2BCBCA3AD4423D679FDBEDDD0848CFE958</key>
 		<string>https://github.com/jianbai/cafe.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>client/ios/cafe/cafe.xcodeproj/project.xcworkspace</string>
+	<string>client/ios/cafe/cafe.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>E1EEDC2BCBCA3AD4423D679FDBEDDD0848CFE958</key>
