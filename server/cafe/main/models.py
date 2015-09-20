@@ -6,7 +6,6 @@ from django.utils import timezone
 
 #DATABASE NOT NORMALIZED, DON'T WANT IT TO BE
 
-#call this something else, could screw up the internals
 class User(models.Model):
     createdAt = models.DateTimeField('user creation date')
     signedIn = models.BooleanField()
